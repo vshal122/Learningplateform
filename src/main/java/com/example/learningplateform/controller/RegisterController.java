@@ -39,7 +39,7 @@ public class RegisterController {
             Course curso = cursoRepository.findById(id_curso).get();
             model.addAttribute("curso", curso);
             model.addAttribute("user", user);
-            return "matricula-success";
+            return "registration-success";
         } catch (Exception e) {
             e.printStackTrace();
             model.addAttribute("error", e);

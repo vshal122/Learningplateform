@@ -51,7 +51,7 @@ public class CourseController {
             Instructor current = profesorRepository.findById(id_profesor).get();
             model.addAttribute("curso", new CourseDto());
             model.addAttribute("profesor", current);
-            return "cursos/curso-add";
+            return "course/course-add";
         } catch (Exception e) {
             e.printStackTrace();
             model.addAttribute("error", e);
@@ -66,7 +66,7 @@ public class CourseController {
             Instructor current = profesorRepository.findById(id_profesor).get();
             curso.setInstructor(current);
             courseService.create(curso);
-            return "redirect:/cursos";
+            return "redirect:/course";
         } catch (Exception e) {
             e.printStackTrace();
             model.addAttribute("error", e);
@@ -81,7 +81,7 @@ public class CourseController {
         try {
             Course cursoActual = cursoRepository.findById(id_curso).get();
             model.addAttribute("curso", cursoActual);
-            return "cursos/curso-edit";
+            return "course/course-edit";
         } catch (Exception e) {
             e.printStackTrace();
             model.addAttribute("error", e);
@@ -100,7 +100,7 @@ public class CourseController {
             courseService.update(curso, id_curso);
             attributes.addAttribute("id_curso", id_curso);
 
-            return "redirect:/cursos/{id_curso}";
+            return "redirect:/course/{id_curso}";
         } catch (Exception e) {
             e.printStackTrace();
             model.addAttribute("error", e);
@@ -112,7 +112,7 @@ public class CourseController {
     public String getCursosList(Model model) {
         List<Course> cursos = courseService.getAll();
         model.addAttribute("cursos", cursos);
-        return "cursos/cursos";
+        return "course/course";
     }
 
     @GetMapping("/delete/{id_curso}")
@@ -122,7 +122,7 @@ public class CourseController {
             Course cursoActual = cursoRepository.findById(id_curso).get();
             courseService.delete(cursoActual);
 
-            return "redirect:/cursos";
+            return "redirect:/course";
         } catch (Exception e) {
             e.printStackTrace();
             model.addAttribute("error", e);
@@ -143,7 +143,7 @@ public class CourseController {
             }
             model.addAttribute("curso", curso);
             model.addAttribute("matriculado", matriculado);
-            return "cursos/curso-detail";
+            return "course/course-detail";
         } catch (Exception e) {
             e.printStackTrace();
             model.addAttribute("error", e);

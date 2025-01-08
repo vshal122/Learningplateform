@@ -38,7 +38,7 @@ public class InstructorController {
     @PreAuthorize("hasRole('ROLE_USER')")
     public String addProfesor(Model model) {
         model.addAttribute("profesor", new InstructorDto());
-        return "profesores/profesor-add";
+        return "instructor/instructor-add";
     }
 
     @PostMapping("/save")
@@ -46,7 +46,7 @@ public class InstructorController {
     public String saveProfesor(InstructorDto profesor) {
         profesorService.create(profesor);
 
-        return "redirect:/profesores";
+        return "redirect:/instructor";
     }
 
     @GetMapping("/edit/{id_profesor}")
@@ -56,7 +56,7 @@ public class InstructorController {
         try {
             Instructor profesorActual = profesorRepository.findById(id_profesor).get();
             model.addAttribute("profesor", profesorActual);
-            return "profesores/profesor-edit";
+            return "instructor/instructor-edit";
         } catch (Exception e) {
             e.printStackTrace();
             model.addAttribute("error", e);
@@ -80,7 +80,7 @@ public class InstructorController {
             profesorService.update(profesor);
             attributes.addAttribute("id_profesor", id_profesor);
 
-            return "redirect:/profesores/{id_profesor}";
+            return "redirect:/instructor/{id_profesor}";
         } catch (Exception e) {
             e.printStackTrace();
             model.addAttribute("error", e);
@@ -97,7 +97,7 @@ public class InstructorController {
             profesorService.patch(current);
 
             attributes.addAttribute("id_profesor", id_profesor);
-            return "redirect:/profesores/{id_profesor}";
+            return "redirect:/instructor/{id_profesor}";
         } catch (Exception e) {
             e.printStackTrace();
             model.addAttribute("error", e);
@@ -110,7 +110,7 @@ public class InstructorController {
     public String getProfesoresList(Model model) {
         List<Instructor> profesores = profesorService.getAll();
         model.addAttribute("profesores", profesores);
-        return "profesores/profesores";
+        return "instructor/instructor";
     }
 
     @GetMapping("/delete/{id_profesor}")
@@ -120,7 +120,7 @@ public class InstructorController {
             Instructor profesorActual = profesorRepository.findById(id_profesor).get();
             profesorService.delete(profesorActual);
 
-            return "redirect:/profesores";
+            return "redirect:/instructor";
         } catch (Exception e) {
             e.printStackTrace();
             model.addAttribute("error", e);
@@ -136,7 +136,7 @@ public class InstructorController {
             model.addAttribute("profesor", profesor);
             List<Course> cursos = cursoRepository.findAllByInstructor(profesor);
             model.addAttribute("cursos", cursos);
-            return "profesores/profesor-detail";
+            return "instructor/instructor-detail";
         } catch (Exception e) {
             e.printStackTrace();
             model.addAttribute("error", e);

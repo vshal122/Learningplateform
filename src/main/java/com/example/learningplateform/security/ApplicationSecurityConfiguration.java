@@ -47,10 +47,10 @@ public class ApplicationSecurityConfiguration  {
         return authorityMapper;
     }
 
-    @Bean
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.authenticationProvider(authenticationProvider());
-    }
+//    @Bean
+//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.authenticationProvider(authenticationProvider());
+//    }
 
     //public SecurityFilterChain filterChain(HttpSecurity http) throws E
 

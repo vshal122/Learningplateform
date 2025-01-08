@@ -1,8 +1,8 @@
 -- INSERTAR USUARIOS
-INSERT INTO user (username, password, nombre, apellido, email, fecha_registro, imgurl) VALUES
+INSERT INTO usercommon (username, password, nombre, apellido, email, fecha_registro, imgurl) VALUES
 ('edominguez', '$2a$11$aS77ckdkRb.zbVGNyLRcTu6yAJ3/tJt/VPoWK/rh6Gecj9narwSqK', 'Edwin', 'Dominguez','edwindominguez@hotmail.com', '2019-09-10', 'https://i.imgur.com/T0n0PH9.jpg'),
 ('demo', '$2a$11$aS77ckdkRb.zbVGNyLRcTu6yAJ3/tJt/VPoWK/rh6Gecj9narwSqK', 'demo', 'test', 'demo@demo.com', '2019-09-10', 'https://i.imgur.com/k4k1fOM.png'),
-('shyam', 'shyam', 'Edwin', 'Dominguez','shyam12@hotmail.com', '2019-09-10', 'https://i.imgur.com/T0n0PH9.jpg');
+
 -- INSERTAR ROLES
 INSERT INTO auth_user_group (username, auth_group) VALUES('edominguez', 'USER');
 INSERT INTO auth_user_group (username, auth_group) VALUES('edominguez', 'ADMIN');
